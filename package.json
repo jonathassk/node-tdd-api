@@ -1,0 +1,22 @@
+{
+  "name": "tdd-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonathassk/node-tdd-api.git"
+  },
+  "author": "jonathas fonseca",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonathassk/node-tdd-api/issues"
+  },
+  "homepage": "https://github.com/jonathassk/node-tdd-api#readme",
+  "devDependencies": {
+    "standard": "^14.3.3"
+  }
+}
