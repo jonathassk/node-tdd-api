@@ -106,7 +106,7 @@ describe('Login Router', () => {
   })
 
   test('should return 200 if everything is ok', () => {
-    const { sut } = makeSut()
+    const { sut, authUseCaseSpy } = makeSut()
     const httpRequest = {
       body: {
         email: 'validEmail@email.com',
@@ -115,5 +115,6 @@ describe('Login Router', () => {
     }
     const httpResponse = sut.route(httpRequest)
     expect(httpResponse.statusCode).toBe(200)
+    expect(httpResponse.body.accessToken).toEqual(authUseCaseSpy.accessToken)
   })
 })
