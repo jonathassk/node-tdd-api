@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --watch --silent",
     "test:staged": "jest --passWithNoTests --findRelatedTests --silent",
-    "test:ci": ""
+    "test:ci": "jest --coverage"
   },
   "lint-staged": {
     "*.js": [
@@ -16,7 +16,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run test:ci"
     }
   },
   "standard": {
