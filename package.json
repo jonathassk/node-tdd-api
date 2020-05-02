@@ -23,7 +23,9 @@
     }
   },
   "standard": {
-    "env": ["jest"]
+    "env": [
+      "jest"
+    ]
   },
   "repository": {
     "type": "git",
@@ -40,5 +42,8 @@
     "jest": "^25.5.1",
     "lint-staged": "^10.2.0",
     "standard": "^14.3.3"
+  },
+  "dependencies": {
+    "validator": "^13.0.0"
   }
 }
