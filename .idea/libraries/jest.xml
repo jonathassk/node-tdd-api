@@ -2,11 +2,11 @@
   <library name="jest" type="javaScript">
     <properties>
       <sourceFilesUrls>
-        <item url="file:///usr/local/lib/node_modules/@types/jest/index.d.ts" />
+        <item url="file:///usr/lib/node_modules/@types/jest/index.d.ts" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
-      <root url="file:///usr/local/lib/node_modules/@types/jest/index.d.ts" />
+      <root url="file:///usr/lib/node_modules/@types/jest/index.d.ts" />
     </CLASSES>
     <SOURCES />
   </library>
