@@ -1,5 +1,7 @@
 const bcrypt = require('bcrypt')
 const Encrypter = require('./encrypter')
+const { MissingParamError } = require('../../presentation/errors/index')
+
 const makeSut = () => {
   return new Encrypter()
 }
@@ -23,5 +25,20 @@ describe('Encrypter', () => {
     await sut.compare('value', 'hash')
     expect(bcrypt.value).toBe('value')
     expect(bcrypt.hash).toBe('hash')
+  })
+
+  test('Should throw if values are not prvided', async () => {
+    const sut = makeSut()
+    expect(sut.compare()).rejects.toThrow(new MissingParamError('value'))
+  })
+
+  test('Should throw if values are not prvided', async () => {
+    const sut = makeSut()
+    expect(sut.compare('value')).rejects.toThrow(new MissingParamError('hash'))
+  })
+
+  test('Should throw if values are not prvided', async () => {
+    const sut = makeSut()
+    expect(sut.compare('', 'hash')).rejects.toThrow(new MissingParamError('value'))
   })
 })
