@@ -7,7 +7,10 @@ const ServerError = require('../errors/server-error')
 const makeSut = () => {
   const authUseCaseSpy = makeAuthUseCase()
   const emailValidatorSpy = makeEmailValidator()
-  const sut = new LoginRouter(authUseCaseSpy, emailValidatorSpy)
+  const sut = new LoginRouter({
+    authUseCase: authUseCaseSpy,
+    emailValidator: emailValidatorSpy
+  })
   return { sut, authUseCaseSpy, emailValidatorSpy }
 }
 
@@ -64,7 +67,7 @@ describe('Login Router', () => {
     const httpRequest = {
       body: {
         email: 'invalidEmail@email.com',
-        password: 'password'
+        password: 'password.'
       }
     }
     const httpResponse = sut.route(httpRequest)
