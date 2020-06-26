@@ -1,5 +1,5 @@
 const MissingParamError = require('../../utils/errors/missing-param-error')
-const MongoHelper = require('../helpers/mongo-helper')
+const MongoHelper = require('../helpsers/mongo-helper')
 
 module.exports = class UpdateAccessTokenRepository {
   async update (userId, accessToken) {
