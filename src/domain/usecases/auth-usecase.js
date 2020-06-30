@@ -10,10 +10,10 @@ module.exports = class AuthUseCase {
 
   async auth (email, password) {
     if (!email) {
-      throw new MissingParamError('email')
+      throw new MissingParamError('Email')
     }
     if (!password) {
-      throw new MissingParamError('password')
+      throw new MissingParamError('Password')
     }
     const user = await this.loadUserByEmailRepository.load(email)
     const isValid = user && await this.encrypter.compare(password, user.password)
