@@ -1,11 +1,9 @@
-const App = require('./config/app')
-const mongoHelper = require('../infra/helpsers/mongo-helper')
-const env = require('../main/config/env')
+const MongoHelper = require('../infra/helpers/mongo-helper')
+const env = require('./config/env')
 
-mongoHelper.connect(env.mongoUrl)
+MongoHelper.connect(env.mongoUrl)
   .then(() => {
-    App.listen(env.port, () => {
-      console.log(`server running at localhost: http://localhost:${env.port}`)
-    })
+    const app = require('./config/app')
+    app.listen(env.port, () => console.log(`Server running at http://localhost:${env.port}`))
   })
   .catch(console.error)

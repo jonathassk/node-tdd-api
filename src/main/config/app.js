@@ -1,9 +1,9 @@
 const express = require('express')
-const App = express()
-const SetupApp = require('./setup')
-const Routes = require('./routes')
+const app = express()
+const setupApp = require('./setup')
+const setupRoutes = require('./routes')
 
-SetupApp(App)
-Routes(App)
+setupApp(app)
+setupRoutes(app)
 
-module.exports = App
+module.exports = app
