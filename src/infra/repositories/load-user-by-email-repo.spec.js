@@ -1,6 +1,6 @@
 const MongoHelper = require('../helpsers/mongo-helper')
 const LoadUserByEmailRepo = require('./load-user-by-email-repository')
-let db
+let userModel
 
 const makeSut = () => {
   return new LoadUserByEmailRepo()
@@ -9,15 +9,15 @@ const makeSut = () => {
 describe('loadUserByEmail', () => {
   beforeAll(async () => {
     await MongoHelper.connect(process.env.MONGO_URL)
-    db = await MongoHelper.getDb()
+    userModel = await MongoHelper.getCollection('users')
+  })
+
+  beforeEach(async () => {
+    await userModel.deleteMany()
   })
 
   afterAll(async () => {
     await MongoHelper.disconnect()
-  })
-
-  beforeEach(async () => {
-    await db.collection('users').deleteMany()
   })
 
   test('Should return null if user is not found', async () => {
@@ -28,7 +28,7 @@ describe('loadUserByEmail', () => {
 
   test('Should return an user if user is found.', async () => {
     const Sut = makeSut()
-    const fakeUser = await db.collection('users').insertOne({
+    const fakeUser = await userModel.insertOne({
       email: 'validEmail@mail.com',
       name: 'user',
       age: 20,
